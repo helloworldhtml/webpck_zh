@@ -8,14 +8,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 // 引入webpack
 const webpack = require('webpack')
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// 性能分析
+// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 module.exports = {
   // 打包入口
   entry: './src/main.js',
   // 打包出口
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, '../dist1')
+    path: path.resolve(__dirname, '../dist')
   },
   // 配置打包规则
   // 总结：1. webpack本身只能打包js文件，如果要打包其他文件就需要借助于loader
@@ -45,7 +46,7 @@ module.exports = {
       use: [
         'style-loader',
         'css-loader',
-        // 'postcss-loader',  // 给样式自动加前缀
+        'postcss-loader',  // 给样式自动加前缀
         'stylus-loader'
       ]
       // 先用stylus-loader处理成css文件
@@ -60,7 +61,7 @@ module.exports = {
     }),
     // 打包之前先删掉原来的dist目录
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ],
   resolve: {
     alias: { // 起一个别名
