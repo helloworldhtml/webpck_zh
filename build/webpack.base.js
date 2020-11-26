@@ -15,7 +15,7 @@ module.exports = {
   entry: './src/main.js',
   // 打包出口
   output: {
-    filename: 'main.js',
+    filename: 'main[hash].js',
     path: path.resolve(__dirname, '../dist')
   },
   // 配置打包规则
